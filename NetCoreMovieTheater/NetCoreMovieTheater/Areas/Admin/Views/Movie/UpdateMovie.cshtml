@@ -1,0 +1,52 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "UpdateMovie";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<Genre> Olmayan = ViewBag.genres;
+    List<Genre> Olan = ViewBag.olan;
+    
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div asp-validation-summary="All">
+
+            </div>
+            <form asp-action="UpdateMovie" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Movie Name</label>
+                    <input name="MovieName" value="@Model.MovieName" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input name="Description" value="@Model.Description" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+
+                    @foreach (var item in Olan)
+                    {
+                        foreach (var x in Olmayan)
+                        {
+                            if (x.Id == item.Id)
+                            {
+                                <input checked type="checkbox" name="genresId" value="@item.Id">
+                                <label for="vehicle1"> @item.GenreName</label><br>
+                                break;
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="genresId" value="@item.Id">
+                                <label for="vehicle1"> @item.GenreName</label><br>
+                                break;
+                            }
+                        }
+
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+

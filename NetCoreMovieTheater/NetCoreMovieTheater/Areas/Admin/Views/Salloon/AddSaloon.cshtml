@@ -1,0 +1,26 @@
+﻿@model Salloon
+@{
+    ViewData["Title"] = "AddSaloon";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div asp-validation-summary="All">
+
+            </div>
+            <form asp-action="AddSaloon" method="post">
+                <div class="form-group">
+                    <label asp-for="SalloonName">Salloon Name</label>
+                    <input name="SalloonName" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Capacity">Capacity</label>
+                    <input name="Capacity" type="text" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
